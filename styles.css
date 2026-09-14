@@ -153,6 +153,27 @@ a.card:hover .card-media img {
   transition: color 0.2s ease;
 }
 
+.card-links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-links a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--paper);
+  transition: color 0.2s ease;
+  width: fit-content;
+}
+
+.card-links a:hover {
+  color: var(--accent);
+}
+
 .card.is-soon {
   cursor: default;
   opacity: 0.55;
