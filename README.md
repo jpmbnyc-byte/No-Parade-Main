@@ -6,8 +6,7 @@ brand:
 
 - **Bayonne Athletics** → `www.ba-athletics.com` (live) — its own fully
   independent domain, not a subdomain of this one.
-- **No Parade F.C.** → `npfc.noparade.store` (live once the domain
-  below is added in Vercel)
+- **No Parade F.C.** → `npfc.noparade.store` (live)
 - **Letters to God** → coming soon, no link yet
 - **Human Weather** → `humanweather.press` / `humanweather.social`
   (live, external domains, unrelated to this one)
@@ -15,6 +14,38 @@ brand:
 There is intentionally no backend here — no server, no database, no
 build. It's a router, not a store. Each brand keeps its own commerce
 stack (see "Backend shape" below).
+
+## Visual system
+
+This isn't four unrelated tiles in a grid — it's one house (No Parade)
+with four distinct worlds inside it, and the layout says so:
+
+- **One 12-column asymmetric index, not a card grid.** Bayonne
+  Athletics and No Parade F.C. are image-led and staggered (`.entry--physical`
+  spans columns 1–8, `.entry--club` spans 5–12 and sits lower/narrower)
+  so the two never read as a matched pair. Letters to God is tucked
+  into a narrow, off-axis column (3–6) — quiet, no image, because it
+  has nothing to show yet. Human Weather runs full-width beneath a
+  rule, set larger and more atmospheric than the shop entries above it.
+- **One type system, divergent voices.** Space Grotesk/Work Sans (the
+  original hub typefaces) carry navigation, numbering (`01`–`04`), and
+  the two live product entries. Fraunces (an editorial serif) is
+  reserved for Letters to God and Human Weather only — the interior
+  and observational worlds — set in italic, quieter, never used for
+  commerce copy.
+- **No decorative imagery.** Letters to God has no photo yet, so it
+  stays text-only rather than shipping a placeholder — the real book
+  and writing photography belongs there once it exists, not as
+  homepage decoration. Human Weather stays text-and-links for the same
+  reason; its OG imagery is a future addition, not a stand-in hero.
+- **Restraint stays the identity.** No card shadows, no rounded
+  containers, no gradients, no glass, no carousel, no scroll animation.
+  The masthead copy — "Choose where you're headed." — is unchanged;
+  the brief was to make the existing restraint feel authored, not to
+  replace it with marketing language.
+
+Mobile collapses to a single column (all four entries full-width,
+generous vertical rhythm) rather than re-flowing the desktop grid.
 
 ## Deploy (Vercel)
 
