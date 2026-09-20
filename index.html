@@ -5,17 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>No Parade</title>
 <meta name="description" content="No Parade — Bayonne Athletics, No Parade F.C., Letters to God, and Human Weather.">
-<link rel="icon" href="data:,">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<!-- Same two faces as npfc.noparade.store, so the house reads as one system. -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="masthead">
-  <h1 class="wordmark">No Parade</h1>
-  <p class="kicker">Choose where you&rsquo;re headed.</p>
+  <div class="masthead-inner">
+    <h1 class="wordmark">No Parade</h1>
+    <p class="kicker">Choose where you&rsquo;re headed.</p>
+  </div>
 </header>
 
 <main class="index">
@@ -23,33 +27,41 @@
   <a class="entry entry--physical" href="https://www.ba-athletics.com" rel="noopener">
     <span class="entry-index">01</span>
     <div class="entry-media">
-      <img src="ba-tile.jpg" alt="Model wearing the Bayonne Athletics 1936 Match Jersey" loading="lazy">
+      <span class="badge">Live</span>
+      <picture>
+        <source srcset="ba-tile.webp" type="image/webp">
+        <img src="ba-tile.jpg" alt="Model wearing the Bayonne Athletics 1936 Match Jersey" width="1200" height="676" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="entry-body">
-      <span class="entry-status is-live">Live</span>
       <h2 class="entry-name">Bayonne Athletics</h2>
       <p class="entry-tagline">Built different.</p>
       <p class="entry-detail">Fall 001 &middot; 07002</p>
+      <span class="action">Visit the shop</span>
     </div>
   </a>
 
   <a class="entry entry--club" href="https://npfc.noparade.store" rel="noopener">
     <span class="entry-index">02</span>
     <div class="entry-media">
-      <img src="npfc-tile.jpg" alt="No Parade F.C. custom club jersey" loading="lazy">
+      <span class="badge">Live</span>
+      <picture>
+        <source srcset="npfc-tile.webp" type="image/webp">
+        <img src="npfc-tile.jpg" alt="The Champions by No Parade F.C. — Pelé, Robben, Henry and Ballack in the Release 01 kits" width="1200" height="960" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="entry-body">
-      <span class="entry-status is-live">Live</span>
       <h2 class="entry-name">No Parade F.C.</h2>
       <p class="entry-tagline">Peace be with you.</p>
-      <p class="entry-detail">Build your crest. Custom club kits.</p>
+      <p class="entry-detail">The Champions &middot; Release 01</p>
+      <span class="action">Shop the collection</span>
     </div>
   </a>
 
   <div class="entry entry--practice is-soon" aria-disabled="true">
     <span class="entry-index">03</span>
     <div class="entry-body">
-      <span class="entry-status">Coming soon</span>
+      <span class="badge badge--quiet">Coming soon</span>
       <h2 class="entry-name">Letters to God</h2>
       <p class="entry-tagline">A prayer journal.</p>
     </div>
@@ -58,12 +70,12 @@
   <div class="entry entry--editorial">
     <span class="entry-index">04</span>
     <div class="entry-body">
-      <span class="entry-status is-live">Live</span>
+      <span class="badge">Live</span>
       <h2 class="entry-name">Human Weather</h2>
       <p class="entry-tagline">Essays.</p>
       <div class="entry-links">
-        <a href="https://humanweather.press" rel="noopener">Read the essays &rarr;</a>
-        <a href="https://humanweather.social" rel="noopener">Follow along &rarr;</a>
+        <a href="https://humanweather.press" rel="noopener">Read the essays</a>
+        <a href="https://humanweather.social" rel="noopener">Follow along</a>
       </div>
     </div>
   </div>
@@ -71,7 +83,8 @@
 </main>
 
 <footer class="site-footer">
-  <span>No Parade</span>
+  <span class="site-footer-mark">No Parade</span>
+  <span class="site-footer-note">Peace be with you.</span>
 </footer>
 
 </body>

@@ -27,12 +27,19 @@ with four distinct worlds inside it, and the layout says so:
   into a narrow, off-axis column (3–6) — quiet, no image, because it
   has nothing to show yet. Human Weather runs full-width beneath a
   rule, set larger and more atmospheric than the shop entries above it.
-- **One type system, divergent voices.** Space Grotesk/Work Sans (the
-  original hub typefaces) carry navigation, numbering (`01`–`04`), and
-  the two live product entries. Fraunces (an editorial serif) is
-  reserved for Letters to God and Human Weather only — the interior
-  and observational worlds — set in italic, quieter, never used for
-  commerce copy.
+- **One type system, divergent voices.** Manrope carries the numbering
+  (`01`–`04`), the badges and the actions. Playfair Display carries every
+  entry name, and its italic is reserved for Letters to God and Human
+  Weather only — the interior and observational worlds — quieter, never
+  used for commerce copy. These are the same two faces the shop uses, so
+  the house reads as one system rather than two sites that happen to
+  share a name.
+- **Shared retail palette.** White ground, black and grey interface,
+  colour only from the photography; black badges for status and black
+  boxed actions, matching `npfc.noparade.store`. What is deliberately
+  NOT shared is the shop's structure: this is an index of four worlds,
+  not a product grid, so the asymmetric rhythm above survives the
+  restyle intact.
 - **No decorative imagery.** Letters to God has no photo yet, so it
   stays text-only rather than shipping a placeholder — the real book
   and writing photography belongs there once it exists, not as
