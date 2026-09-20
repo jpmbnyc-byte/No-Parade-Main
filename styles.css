@@ -67,6 +67,22 @@ a {
   margin: 0 auto;
 }
 
+/* The mark is a wide horizontal monogram, so it is sized by width and never
+   set taller than the wordmark it sits above. logo-mark.png is the ink
+   colourway — the cream original would vanish on this white ground, which is
+   why both colourways exist rather than one "transparent logo". */
+.mark {
+  display: block;
+  width: clamp(88px, 13vw, 132px);
+  height: auto;
+  margin-bottom: clamp(20px, 3vw, 30px);
+}
+
+.mark--footer {
+  width: 54px;
+  margin: 0;
+}
+
 .wordmark {
   margin: 0;
   font-family: var(--font-display);
@@ -338,6 +354,8 @@ a {
 }
 
 .site-footer-mark {
+  display: flex;
+  align-items: center;
   color: var(--fg);
 }
 
