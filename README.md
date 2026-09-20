@@ -8,8 +8,9 @@ brand:
   independent domain, not a subdomain of this one.
 - **No Parade F.C.** → `npfc.noparade.store` (live)
 - **Letters to God** → coming soon, no link yet
-- **Human Weather** → `humanweather.press` / `humanweather.social`
-  (live, external domains, unrelated to this one)
+- **Human Weather Press** → `humanweather.press` (live) — the field journal
+- **Human Weather Social** → `humanweather.social` (live) — the field
+  station, a PWA
 
 There is intentionally no backend here — no server, no database, no
 build. It's a router, not a store. Each brand keeps its own commerce
@@ -48,11 +49,14 @@ with four distinct worlds inside it, and the layout says so:
   NOT shared is the shop's structure: this is an index of four worlds,
   not a product grid, so the asymmetric rhythm above survives the
   restyle intact.
-- **No decorative imagery.** Letters to God has no photo yet, so it
-  stays text-only rather than shipping a placeholder — the real book
-  and writing photography belongs there once it exists, not as
-  homepage decoration. Human Weather stays text-and-links for the same
-  reason; its OG imagery is a future addition, not a stand-in hero.
+- **No decorative imagery.** Letters to God has no photo yet, so it stays
+  text-only rather than shipping a placeholder — the real book and writing
+  photography belongs there once it exists, not as homepage decoration.
+  Human Weather was text-and-links for the same reason until its two
+  products had artwork; it is now two image-led entries, one per
+  destination, cropped from the supplied cards to the device mockups only.
+  The cards' own headline typography is not used: it would put a second
+  type system on the page saying what the hub's caption already says.
 - **Restraint stays the identity.** No card shadows, no rounded
   containers, no gradients, no glass, no carousel, no scroll animation.
   The masthead copy — "Choose where you're headed." — is unchanged;

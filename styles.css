@@ -280,23 +280,50 @@ a {
 
 .entry:hover .action { opacity: 0.85; }
 
-/* Letters to God and Human Weather share one row instead of taking a
-   full-width band each for ~150px of content. They stay plainly unequal —
-   different widths, different sizes, one italic and one not — so the four
-   worlds still never read as a matched set. */
+/* Letters to God, then the two Human Weather destinations, share one row.
+   Human Weather used to be a single text-and-links entry because it had no
+   imagery; it has two products and artwork for both now, so it becomes two
+   image-led entries rather than one link list. They stay plainly unequal —
+   a near-square browser beside a tall phone, at different column widths —
+   so the index still never reads as a matched set. */
 
 .entry--practice,
-.entry--editorial {
-  grid-column: 1 / -1;
+.entry--press,
+.entry--social {
   padding-top: clamp(28px, 4vw, 44px);
   border-top: 1px solid var(--line);
 }
 
-.entry--practice { grid-column: 1 / 6; }
-.entry--editorial { grid-column: 6 / 13; }
+.entry--practice { grid-column: 1 / 5; }
+.entry--press    { grid-column: 5 / 10; }
+.entry--social   { grid-column: 10 / 13; }
 
-.entry--practice .entry-body { grid-column: 1 / -1; }
-.entry--editorial .entry-body { grid-column: 1 / -1; }
+.entry--press .entry-media,
+.entry--social .entry-media,
+.entry--press .entry-body,
+.entry--social .entry-body,
+.entry--practice .entry-body {
+  grid-column: 1 / -1;
+}
+
+.entry--press .entry-media  { aspect-ratio: 830 / 775; }
+.entry--social .entry-media { aspect-ratio: 693 / 924; }
+
+/* These two tiles are artwork inset on their own cream ground, not a photo
+   bled to the edge, so a badge in the top-left corner lands on the browser's
+   traffic lights. It goes to the bottom margin instead. */
+.entry--press .entry-media .badge,
+.entry--social .entry-media .badge {
+  top: auto;
+  bottom: 12px;
+}
+
+/* All three bottom out together, so the captions share one baseline and the
+   tiles' top edges stay deliberately ragged — an arrangement, not a grid. */
+.entry--press,
+.entry--social {
+  align-content: end;
+}
 
 .entry--practice .entry-name,
 .entry--practice .entry-tagline {
@@ -312,46 +339,25 @@ a {
 
 .entry--practice .entry-tagline { color: var(--muted); }
 
+/* Letters to God carries a fraction of the content its row-mates do, and it
+   has no artwork by design. Dropping it to the row's baseline puts all three
+   captions on one line and turns the space above it into air rather than a
+   hole — which is also where its imagery will go when it exists. */
+.entry--practice .entry-body {
+  align-self: end;
+  padding-bottom: 2px;
+}
+
 .entry.is-soon { cursor: default; }
 
-.entry--editorial .entry-name {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.9rem, 4vw, 2.9rem);
-  line-height: 1;
-}
-
-.entry--editorial .entry-tagline {
+/* The editorial voice survives the change: the two Human Weather taglines
+   stay in the display italic that was reserved for the observational world. */
+.entry--press .entry-tagline,
+.entry--social .entry-tagline {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  font-size: 1.05rem;
   color: var(--muted);
-  margin-top: 8px;
-}
-
-.entry-links {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.entry-links a {
-  border: 1px solid var(--line);
-  padding: 11px 20px;
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--fg);
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-.entry-links a:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-fg);
 }
 
 /* ---------- Footer ---------- */
@@ -386,7 +392,8 @@ a {
   .entry--physical,
   .entry--club,
   .entry--practice,
-  .entry--editorial {
+  .entry--press,
+  .entry--social {
     grid-column: 1 / -1;
     grid-template-columns: 1fr;
   }
@@ -401,7 +408,8 @@ a {
   }
 
   .entry--practice,
-  .entry--editorial {
+  .entry--press,
+  .entry--social {
     padding-top: clamp(28px, 6vw, 40px);
   }
 }

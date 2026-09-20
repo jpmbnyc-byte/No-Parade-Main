@@ -78,3 +78,32 @@ async function icon(size, name, { rounded = true } = {}) {
   // Un-rounded, for platforms that apply their own mask.
   await icon(512, "icon-maskable.png", { rounded: false });
 })();
+
+/* ---------------------------------------------------------------
+   Human Weather tiles.
+
+   The supplied cards are 941x1672 social-format artwork: device mockup on a
+   cream ground, under the card's own headline set in its own typefaces. Only
+   the device is used — running the whole card would put a second type system
+   on the page, saying the same thing the hub's own caption says.
+   --------------------------------------------------------------- */
+const HW = [
+  // Phone, 3:4, cropped tight enough to clear the card's URL line above it
+  // and its "Enter the field station" line below.
+  { src: "hw-social-card.png", out: "hw-social", crop: { left: 108, top: 668, width: 693, height: 924 } },
+  // Browser window, near square, full card width.
+  { src: "hw-press-card.png", out: "hw-press", crop: { left: 55, top: 740, width: 830, height: 775 } },
+];
+
+(async () => {
+  const fs = require("fs");
+  for (const { src, out, crop } of HW) {
+    const from = path.join(__dirname, "..", "assets-src", src);
+    if (!fs.existsSync(from)) continue;
+    for (const [ext, opt] of [["webp", { quality: 86 }], ["jpg", { quality: 86, mozjpeg: true }]]) {
+      const pipe = sharp(from).extract(crop).resize({ width: 1100 });
+      await (ext === "webp" ? pipe.webp(opt) : pipe.jpeg(opt)).toFile(path.join(OUT, `${out}.${ext}`));
+    }
+    console.log("tile", out.padEnd(12), crop.width + "x" + crop.height, "->", "1100w");
+  }
+})();
