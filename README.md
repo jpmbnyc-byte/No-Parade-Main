@@ -20,10 +20,18 @@ stack (see "Backend shape" below).
 This isn't four unrelated tiles in a grid — it's one house (No Parade)
 with four distinct worlds inside it, and the layout says so:
 
+- **A header, not a masthead.** The identity is a 74px sticky bar: the
+  mark, the name at label size, a hairline rule. It replaced a 417px
+  masthead that stacked a mark, a 103px display wordmark and a tagline —
+  three things all saying "No Parade", eating 46% of a 900px viewport
+  before anything clickable appeared.
 - **One 12-column asymmetric index, not a card grid.** Bayonne
-  Athletics and No Parade F.C. are image-led and staggered (`.entry--physical`
-  spans columns 1–8, `.entry--club` spans 5–12 and sits lower/narrower)
-  so the two never read as a matched pair. Letters to God is tucked
+  Athletics and No Parade F.C. are image-led and staggered, and each entry
+  places its own image and caption in opposite columns: 01 runs image 1–8
+  with its caption in 9–12 settled on the image's bottom edge, 02 mirrors
+  it with a narrower image in 6–12 and its caption starting at the top of
+  1–5. Captions used to sit *under* their images, which left a 519px
+  column empty beside 01 for its full height and 435px beside 02. Letters to God is tucked
   into a narrow, off-axis column (3–6) — quiet, no image, because it
   has nothing to show yet. Human Weather runs full-width beneath a
   rule, set larger and more atmospheric than the shop entries above it.

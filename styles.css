@@ -55,53 +55,83 @@ a {
   color: var(--bg);
 }
 
-/* ---------- Masthead ---------- */
+/* ---------- Header ----------
+   One precise bar, not a monument. The previous masthead ran 417px on a
+   900px viewport — 46% of the first screen — and stacked three things that
+   all said "No Parade": the mark, a 103px display wordmark, and a tagline.
+   The mark carries the identity; the name sits beside it at label size. */
 
-.masthead {
-  padding: clamp(56px, 11vw, 128px) var(--gutter) clamp(36px, 6vw, 64px);
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
-.masthead-inner {
+.topbar-inner {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-/* The mark is a wide horizontal monogram, so it is sized by width and never
-   set taller than the wordmark it sits above. logo-mark.png is the ink
-   colourway — the cream original would vanish on this white ground, which is
-   why both colourways exist rather than one "transparent logo". */
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
 .mark {
   display: block;
-  width: clamp(88px, 13vw, 132px);
+  width: 46px;
   height: auto;
-  margin-bottom: clamp(20px, 3vw, 30px);
 }
 
-.mark--footer {
-  width: 54px;
-  margin: 0;
-}
-
-.wordmark {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(3rem, 11vw, 7rem);
-  letter-spacing: -0.015em;
-  line-height: 0.92;
-}
-
-.kicker {
-  margin: 18px 0 0;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+.topbar-name,
+.topbar-meta {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
+}
+
+.topbar-meta {
+  font-weight: 600;
   color: var(--muted);
 }
 
-/* ---------- Index (the four worlds) ---------- */
+/* ---------- Index head ---------- */
+
+.index-head {
+  /* width:100% matters: body is a flex column, and `margin: 0 auto` on a
+     flex item cancels the default stretch, shrink-wrapping and centring it. */
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 88px) var(--gutter) 0;
+}
+
+.index-lede {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Index (the four worlds) ----------
+   Every entry spans the full measure and places its own parts inside a
+   matching twelve-column grid. That is what removes the dead space: the
+   text used to sit under the image, leaving a 519px column empty beside
+   entry 01 for its whole height, and 435px beside entry 02. Now the image
+   takes one side and the text the other, alternating down the page — the
+   stagger the brief asks for, without the holes. */
 
 .index {
   flex: 1 1 auto;
@@ -111,26 +141,30 @@ a {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: clamp(16px, 2.4vw, 32px);
-  row-gap: clamp(56px, 9vw, 104px);
-  padding: clamp(56px, 9vw, 104px) var(--gutter) clamp(80px, 11vw, 148px);
+  row-gap: clamp(44px, 6vw, 76px);
+  padding: clamp(32px, 5vw, 52px) var(--gutter) clamp(64px, 9vw, 112px);
 }
 
 .entry {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 2.4vw, 32px);
+  row-gap: 20px;
   text-decoration: none;
   color: inherit;
 }
 
+/* The numeral sits with the caption. Over the photography it needed a blend
+   mode to survive, and still disappeared into the bright end of the frame. */
 .entry-index {
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.24em;
   color: var(--muted);
+  margin-bottom: 10px;
 }
 
-/* Badges match the shop's release tags: a black box, not a coloured word. */
 .badge {
   align-self: flex-start;
   display: inline-block;
@@ -150,15 +184,6 @@ a {
   padding: 3px 8px;
 }
 
-/* A flex column so align-self works on the badge and the action. As a plain
-   block it did not, and the inline <span> action overlapped the detail line
-   above it. */
-.entry-body {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 .entry-detail {
   margin: 4px 0 0;
   font-size: 0.72rem;
@@ -167,30 +192,32 @@ a {
   color: var(--muted);
 }
 
-/* Physical + club worlds: image-led, staggered rhythm rather than a matched
-   pair — the club entry sits lower and narrower, so the two never read as a
-   uniform grid. */
+/* Image left, text right — then mirrored, so the page alternates. */
+/* grid-row is explicit on purpose. Auto-placement never backtracks, so when
+   the caption sits in columns to the LEFT of an image declared before it —
+   entry 02 — it gets pushed onto a second row instead of sitting beside it. */
+.entry--physical .entry-media { grid-column: 1 / 9;  grid-row: 1; }
+.entry--physical .entry-body  { grid-column: 9 / 13; grid-row: 1; }
 
-.entry--physical {
-  grid-column: 1 / 9;
+.entry--club .entry-media { grid-column: 6 / 13; grid-row: 1; }
+.entry--club .entry-body  { grid-column: 1 / 6;  grid-row: 1; }
+
+.entry--physical .entry-media { aspect-ratio: 16 / 9; }
+.entry--club .entry-media { aspect-ratio: 3 / 2; }
+
+/* Entry 01's caption settles on its image's bottom edge, entry 02's starts
+   at its image's top. The two voids then fall on opposite diagonals and read
+   as margin rather than as holes. */
+.entry--physical .entry-body {
+  align-self: end;
+  padding-bottom: 4px;
 }
 
-.entry--club {
-  grid-column: 5 / 13;
+.entry--club .entry-body {
+  align-self: start;
+  padding-top: 2px;
 }
 
-.entry--physical .entry-media {
-  aspect-ratio: 16 / 9;
-}
-
-.entry--club .entry-media {
-  aspect-ratio: 5 / 4;
-  width: 88%;
-  margin-left: auto;
-}
-
-/* The tile, not the photograph, carries the frame — same hairline and light
-   ground as the product tiles on the shop. */
 .entry-media {
   position: relative;
   overflow: hidden;
@@ -214,55 +241,62 @@ a {
   transition: transform 0.6s ease;
 }
 
-.entry:hover .entry-media {
-  border-color: var(--muted);
-}
+.entry:hover .entry-media { border-color: var(--muted); }
+.entry:hover .entry-media img { transform: scale(1.03); }
 
-.entry:hover .entry-media img {
-  transform: scale(1.03);
+.entry-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .entry-name {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.45rem, 2.8vw, 2rem);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
   letter-spacing: -0.01em;
   line-height: 1.05;
 }
 
 .entry-tagline {
   margin: 4px 0 0;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--muted);
 }
 
-/* The action reads as the shop's primary button: black, boxed, uppercase. */
 .action {
   align-self: flex-start;
-  margin-top: 14px;
+  margin-top: 16px;
   background: var(--accent);
   color: var(--accent-fg);
   padding: 12px 22px;
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   transition: opacity 0.2s ease;
 }
 
-.entry:hover .action {
-  opacity: 0.85;
+.entry:hover .action { opacity: 0.85; }
+
+/* Letters to God and Human Weather share one row instead of taking a
+   full-width band each for ~150px of content. They stay plainly unequal —
+   different widths, different sizes, one italic and one not — so the four
+   worlds still never read as a matched set. */
+
+.entry--practice,
+.entry--editorial {
+  grid-column: 1 / -1;
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid var(--line);
 }
 
-/* Letters to God: the interior world — quiet, tucked off-axis, set in the
-   display serif's italic. No image yet; the book and writing photography
-   belong here once they exist, not as decoration on the homepage. */
+.entry--practice { grid-column: 1 / 6; }
+.entry--editorial { grid-column: 6 / 13; }
 
-.entry--practice {
-  grid-column: 3 / 7;
-  padding-top: 6px;
-}
+.entry--practice .entry-body { grid-column: 1 / -1; }
+.entry--editorial .entry-body { grid-column: 1 / -1; }
 
 .entry--practice .entry-name,
 .entry--practice .entry-tagline {
@@ -272,54 +306,40 @@ a {
 }
 
 .entry--practice .entry-name {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
   color: var(--muted);
 }
 
-.entry--practice .entry-tagline {
-  color: var(--muted);
-}
+.entry--practice .entry-tagline { color: var(--muted); }
 
-.entry.is-soon {
-  cursor: default;
-}
-
-/* Human Weather: the editorial world — full width, set larger and quieter
-   than the shop entries above it. */
-
-.entry--editorial {
-  grid-column: 1 / 13;
-  padding-top: clamp(32px, 5vw, 56px);
-  border-top: 1px solid var(--line);
-}
+.entry.is-soon { cursor: default; }
 
 .entry--editorial .entry-name {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
   line-height: 1;
-  margin-top: 4px;
 }
 
 .entry--editorial .entry-tagline {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
   color: var(--muted);
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .entry-links {
-  margin-top: 24px;
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 .entry-links a {
   border: 1px solid var(--line);
   padding: 11px 20px;
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -361,26 +381,28 @@ a {
 
 /* ---------- Mobile: single-column editorial flow ---------- */
 
-@media (max-width: 780px) {
-  .index {
-    grid-template-columns: 1fr;
-  }
-
+@media (max-width: 900px) {
+  .entry,
   .entry--physical,
   .entry--club,
   .entry--practice,
   .entry--editorial {
     grid-column: 1 / -1;
+    grid-template-columns: 1fr;
   }
 
-  .entry--club .entry-media {
-    width: 100%;
-    margin-left: 0;
+  .entry--physical .entry-media,
+  .entry--physical .entry-body,
+  .entry--club .entry-media,
+  .entry--club .entry-body {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    align-self: start;
   }
 
+  .entry--practice,
   .entry--editorial {
-    border-top: none;
-    padding-top: 0;
+    padding-top: clamp(28px, 6vw, 40px);
   }
 }
 
