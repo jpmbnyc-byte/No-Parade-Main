@@ -300,6 +300,7 @@ a {
 
 .entry--press .entry-media,
 .entry--social .entry-media,
+.entry--practice .entry-media,
 .entry--press .entry-body,
 .entry--social .entry-body,
 .entry--practice .entry-body {
@@ -308,6 +309,7 @@ a {
 
 .entry--press .entry-media  { aspect-ratio: 830 / 775; }
 .entry--social .entry-media { aspect-ratio: 693 / 924; }
+.entry--practice .entry-media { aspect-ratio: 1 / 1; }
 
 /* These two tiles are artwork inset on their own cream ground, not a photo
    bled to the edge, so a badge in the top-left corner lands on the browser's
@@ -325,24 +327,24 @@ a {
   align-content: end;
 }
 
-.entry--practice .entry-name,
-.entry--practice .entry-tagline {
+.entry--practice.is-soon .entry-name,
+.entry--practice.is-soon .entry-tagline {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
 }
 
-.entry--practice .entry-name {
+.entry--practice.is-soon .entry-name {
   font-size: clamp(1.4rem, 2.6vw, 1.8rem);
   color: var(--muted);
 }
 
-.entry--practice .entry-tagline { color: var(--muted); }
+.entry--practice.is-soon .entry-tagline { color: var(--muted); }
 
-/* Letters to God carries a fraction of the content its row-mates do, and it
-   has no artwork by design. Dropping it to the row's baseline puts all three
-   captions on one line and turns the space above it into air rather than a
-   hole — which is also where its imagery will go when it exists. */
+/* While it had no artwork, dropping its caption to the row's baseline put all
+   three captions on one line and turned the space above it into air rather
+   than a hole. Now that it has a tile like its row-mates, it keeps the same
+   baseline alignment so the row still reads as one arrangement. */
 .entry--practice .entry-body {
   align-self: end;
   padding-bottom: 2px;
